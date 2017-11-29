@@ -62,9 +62,7 @@ XHR.GET = function(path,callback) {
 }
 
 XHR.setCallback(function(data){
-    endRequest = Date.now();
     console.log(JSON.stringify(data));
-    console.log('end request:'+ endRequest - window.startRequest)
 });
 
 
@@ -264,7 +262,7 @@ function queryTest1() {
 
 // Query 2 : query field under field : exact match
 function queryTest2() {
-    XHR.GET(SERVER_URL+'/classes/Sleep?'+encodeURI('where={"metadata.app_version":"3"}'))
+    XHR.GET(SERVER_URL+'/classes/Sleep?'+encodeURI('where={"metadata.app_version":3}'))
 }
 
 // Query 3 : query field under field
@@ -291,6 +289,6 @@ getSleepSchemas(); // get 1 schema // similar to getSensor
 
 //generateManyData();
 
-queryTest1();
-//queryTest2();
+//queryTest1();
+queryTest2();
 //queryTest3();
