@@ -14,5 +14,5 @@ npm run dev
 
 open http://localhost:8080/
 
-every **src/js/client.js** is modified, page will be loded automatically.
-this has no UI, only console log output.
+every **src/js/client.js** is modified, page will be loaded automatically.
+the result has no UI, only console log output.
