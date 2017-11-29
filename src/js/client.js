@@ -11,9 +11,9 @@ const APP_ID     = 'myApphaha123';
 const MASTER_KEY = 'myKeyhaha123';
 
 /*
-const SERVER_URL = 'https://goalie2-api.staging.sense-os.nl/parse';
-const APP_ID     = 'goalie_staging';
-const MASTER_KEY = 'V5O6P66P9uwv1W6IxHUkNL9u7hJo49';
+const SERVER_URL = 
+const APP_ID     = 
+const MASTER_KEY = 
 */
 var Parse = require('parse');
 Parse.initialize(APP_ID);
