@@ -9,6 +9,7 @@ const MASTER_KEY =
 ```
 
 npm install
+
 npm run dev
 
 open http://localhost:8080/
