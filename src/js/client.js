@@ -207,41 +207,135 @@ function modifyOtherSchemaTest() {
   XHR.POST(SERVER_URL+'/classes/NobelWinner', nobelWinner)
 }
 
+function saveSleepData(userid, date_start,date_end, sleep_time, sq, polyphasic, metadata) {
+  var sleepData = new Sleep();
+  sleepData.set("user_id", userid);
+  sleepData.set("start_time", date_start );
+  sleepData.set("end_time", date_end );
+  sleepData.set("sleep_time", sleep_time );
+  sleepData.set("sleep_quality", sq);
+  sleepData.set("polyphasic",polyphasic);
+  sleepData.set("metadata", metadata);
+  sleepData.save(null, {
+    success: function(sleepData) {
+      console.log(JSON.stringify(sleepData));
+    },
+    error: function(object, error) {
+      console.log(JSON.stringify(error));
+    }
+  });
+}
+
+function saveSleepData2(userid,date_start,date_end) {
+  var sleep_qs = ["SUPER","GOOD","NORMAL","AVG","BAD"];
+  var polyphasic_a =[true,false];
+    var metadata = {
+      "schema_version":  "3",
+      "app_version": "1",
+      "platform": "android"
+    }
+    metadata.app_version = randomRange(1,25);
+    saveSleepData(userid,
+        date_start,
+        date_end,
+        randomRange(3,12),
+        sleep_qs[ randomRange(0,4)],
+        polyphasic_a[randomRange(0,1)],
+        metadata
+      );
+}
+
 // generate many data
 function generateManyData() {
   var sleep_qs = ["SUPER","GOOD","NORMAL","AVG","BAD"];
   var polyphasic_a =[true,false];
 
   for(var i=0;i<100;i++) {
-      var sleepData = new Sleep();
-      sleepData.set("user_id", "edie_"+i);
-      sleepData.set("start_time", new Date( Date.UTC(2017,11,27,23,0,0) ) );
-      sleepData.set("end_time", new Date( Date.UTC(2017,11,28,7,0,0)));
-      sleepData.set("sleep_time", randomRange(3,12) );
-      sleepData.set("sleep_quality", sleep_qs[ randomRange(0,4)]);
-      sleepData.set("polyphasic",polyphasic_a[randomRange(0,1)]);
-
-      var metadata = {
-        "schema_version":  "3",
-        "app_version": "1",
-        "platform": "android"
-      }
-      metadata.app_version = randomRange(1,25);
-      sleepData.set("metadata", metadata);
-
-      sleepData.save(null, {
-        success: function(sleepData) {
-          console.log(JSON.stringify(sleepData));
-        },
-        error: function(object, error) {
-          console.log(JSON.stringify(error));
-        }
-      });
+    var metadata = {
+      "schema_version":  "3",
+      "app_version": "1",
+      "platform": "android"
+    }
+    metadata.app_version = randomRange(1,25);
+    saveSleepData("DUCKO "+i,
+        new Date(Date.UTC(2017,11,1,23,0,0)),
+        new Date(Date.UTC(2017,11,1,23,0,0)),
+        randomRange(3,12),
+        sleep_qs[ randomRange(0,4)],
+        polyphasic_a[randomRange(0,1)],
+        metadata
+      );
   }
 }
 
 function randomRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// generate data for queryDataTest2
+function generateData2() {
+  saveSleepData2("user_data_A",
+    new Date(Date.UTC(2017,11,1,6,0,0)),  // start_time  year,month,day,hour,min,sec
+    new Date(Date.UTC(2017,11,1,13,0,0))   // end_time
+  );
+
+  saveSleepData2("user_data_B",
+    new Date(Date.UTC(2017,11,1,10,0,0)),
+    new Date(Date.UTC(2017,11,2,8,0,0))
+    );
+  saveSleepData2("user_data_C",
+    new Date(Date.UTC(2017,11,2,5,0,0)),
+    new Date(Date.UTC(2017,11,3,6,0,0))
+  );
+
+  saveSleepData2("user_data_D",
+    new Date(Date.UTC(2017,11,1,1,0,0)),
+    new Date(Date.UTC(2017,11,1,5,0,0))
+    );
+  saveSleepData2("user_data_E",
+    new Date(Date.UTC(2017,11,3,8,0,0)),
+    new Date(Date.UTC(2017,11,3,12,0,0))
+  );
+  saveSleepData2("user_data_F",
+    new Date(Date.UTC(2017,11,1,6,20,0)),
+    new Date(Date.UTC(2017,11,3,7,0,0))
+    );
+}
+
+// this query return : user_data_ : A,B,C,F 
+function queryDataTest2() {
+  var or1 = new Parse.Query(Sleep);
+  or1.greaterThanOrEqualTo("start_time", new Date(Date.UTC(2017,11,1,8,0,0)) );
+  or1.lessThanOrEqualTo("start_time", new Date(Date.UTC(2017,11,2,10,0,0)));
+  
+  var or2 = new Parse.Query(Sleep);
+  or2.greaterThanOrEqualTo("end_time", new Date(Date.UTC(2017,11,1,8,0,0)) );
+  or2.lessThanOrEqualTo("end_time", new Date(Date.UTC(2017,11,2,10,0,0)));
+  
+  var or3 = new Parse.Query(Sleep);
+  or3.lessThan("start_time", new Date(Date.UTC(2017,11,1,8,0,1)));
+  or3.greaterThan("end_time", new Date(Date.UTC(2017,11,2,10,0,0)));
+  
+  var queryCompound = Parse.Query.or(or1,or2,or3);
+  queryCompound.find()
+    .then(function(results) {
+      console.log(JSON.stringify(results));
+    })
+    .catch(function(error) {
+      console.log(JSON.stringify(error));
+    });
+}
+
+// other version of queryDataTest2 ( but don't work. need to find a way to change date format)
+function queryDataTest3() {
+  var start_q ='\"'+(new Date(Date.UTC(2017,11,1,8,0,0))).toISOString()+'\"';
+  var end_q = '\"'+(new Date(Date.UTC(2017,11,2,10,0,0))).toISOString()+'\"';;
+  var or1 = '{"start_time":{"$gte":'+start_q+',"$lte":'+end_q+'}},';
+  var or2 = '{"end_time":{"$gte":'+start_q+',"$lte":'+end_q+'}},';
+  var or3 = '{"start_time":{"$lt":'+start_q+'},"end_time":{"$gt":'+end_q+'}}';
+  var query ='where={"$or":['+or1+or2+or3+']}';
+  console.log(query)
+  XHR.GET(SERVER_URL+'/classes/Sleep?'+encodeURI(query))
 }
 
 // Query 1 : query field
@@ -272,13 +366,13 @@ function queryTest3() {
 
 // ========================= MAIN =========================
 
-addSchemaTest();
-modifySchemaTest();
-modifySchemaTest2();
+//addSchemaTest();
+//modifySchemaTest();
+//modifySchemaTest2();
 
-getAllSchemas();
+//getAllSchemas();
 
-getSleepSchemas(); // get 1 schema // similar to getSensor
+//getSleepSchemas(); // get 1 schema // similar to getSensor
 
 //saveObjectTest(); // save 1 object
 
@@ -290,5 +384,9 @@ getSleepSchemas(); // get 1 schema // similar to getSensor
 //generateManyData();
 
 //queryTest1();
-queryTest2();
+//queryTest2();
 //queryTest3();
+
+
+// generateData2(); // generate data for queryDataTest2
+queryDataTest2();
