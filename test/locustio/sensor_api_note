@@ -1,0 +1,121 @@
+where={
+    
+    "$or":
+    [
+        {"start_time":{"$gte":9800,"$lte":10101}},
+        {"end_time":{"$gte":9800,"$lte":10101}},
+        {"start_time":{"$lt":9800},{"$gt":10101}}
+    ]
+
+}
+
+where={"$or":[{"start_time":{"$gte":2017-12-01T08:00:00.000Z,"$lte":2017-12-02T10:00:00.000Z}},{"end_time":{"$gte":2017-12-01T08:00:00.000Z,"$lte":2017-12-02T10:00:00.000Z}},{"start_time":{"$lt":2017-12-01T08:00:00.000Z},{"$gt":2017-12-02T10:00:00.000Z}}]}
+
+where={"$or":
+[
+    {"start_time":{"$gte":"2017-12-01T08:00:00.000Z","$lte":"2017-12-02T10:00:00.000Z"}},
+    {"end_time":{"$gte":"2017-12-01T08:00:00.000Z","$lte":"2017-12-02T10:00:00.000Z"}},
+    {"start_time":{"$lt":"2017-12-01T08:00:00.000Z"},"end_time":{"$gt":"2017-12-02T10:00:00.000Z"}}
+]
+}
+
+{"user_id":"MYNAME_ 0","start_time":{"__type":"Date","iso":"2017-12-01T23:00:00.000Z"},"end_time":{"__type":"Date","iso":"2017-12-01T23:00:00.000Z"},"sleep_time":9,"sleep_quality":"GOOD","polyphasic":true,"metadata":{"schema_version":"3","app_version":23,"platform":"android"},"createdAt":"2017-12-04T09:52:40.722Z","updatedAt":"2017-12-04T09:52:40.722Z","objectId":"c6I7rwZuYb"}
+
+
+{
+   "user_id":"MYNAME_ 0",
+   "start_time":{
+      "__type":"Date",
+      "iso":"2017-12-01T23:00:00.000Z"
+   },
+   "end_time":{
+      "__type":"Date",
+      "iso":"2017-12-01T23:00:00.000Z"
+   },
+   "sleep_time":9,
+   "sleep_quality":"GOOD",
+   "polyphasic":true,
+   "metadata":{
+      "schema_version":"3",
+      "app_version":23,
+      "platform":"android"
+   }
+}
+
+App usage
+    get data
+        => getEvent(user_A,event_E)
+            =>getSensorA(user_A,t1,t2)
+            =>getSensorB(user_A,t3,t4)
+            =>getSensorC(user_A,t1,t2)
+    save data
+        save sensor data: each sensor saving is independent
+            *saveSensorA()
+            *saveSensorB()
+
+sensor database : mongodb
+    collection = table
+    documents = row
+    max of 1 document size = 16 MB
+    user to each sensor is 1 to N relations
+    each sensor is a collection
+
+    user collection
+        {
+            id: 
+            name :
+            ...
+        }
+    sleep collection // 1 docs is 1 sleep event
+        {
+            user_id: ref user_id
+            start_time : 
+            end_time :
+            sleep_time :
+        }
+    step collection   // 1 docs is a 1 hour step record
+        {
+            user_id: ref user_id 
+            start_time : 
+            end_time :
+            data {     // embed
+                1 : 5    //minute-1
+                2 :
+                ..
+                3 :
+                60 :   // minute 60    
+            }
+        }
+    weight collection   // 1 docs is 1 day weight record
+        {
+            user_id: ref user_id
+            start_time : 
+            end_time :
+            data {
+                13231232131232 : 70,
+                13231232131232 : 79       
+            }
+        }
+
+    new_sensor collection 
+        {
+            user_id: ref user_id
+            start_time : 
+            end_time :
+            // new schema / new data structure
+        }
+
+new sensor addition :
+method 1 : use Parse server as it is
+    1. app dev want to create a new sensor => create a schema in Parse schema format
+    2. schema => added to server ( manually or with web interface)
+    3. result : each data transaction will use schema validation from Parse server
+
+method 2 : add custom schema validation
+    1. app dev want to create a new sensor => create a schema in standard JSON schema format
+    2. save JSON schema in collection of schema (a dedicated collections to save standard JSON schema)
+    3. convert standard JSON schema to parse schema
+    4. parse schema added to server
+    5. result : each data transaction, data will be checked against json schema from collection, this done in cloudcode
+    6. OR : app downloaded json schema , then use this schema to validate before doing request to server
+    

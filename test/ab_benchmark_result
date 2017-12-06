@@ -1,0 +1,433 @@
+=============================================================================
+=============================================================================
+Number of requests : 10000, Concurrency : 100, request type : POST
+request date : 4 dec 2017
+
+$:  ab -n10000 -c100 \
+>   -p sleep.json \
+>   -H "X-Parse-Application-Id: goaxxx_staxxx" \
+>   -H "X-Parse-Master-Key: master_key" \
+>   -H "Content-Type: application/json" \
+>   -H "Accept-Encoding: gzip" \
+> https://gxxxxxxx-api.staging.senxx-xx.xx/parse/classes/Sleep
+This is ApacheBench, Version 2.3 <$Revision: 1757674 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gxxxxxxx-api.staging.senxx-xx.xx (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        
+Server Hostname:        gxxxxxxx-api.staging.senxx-xx.xx
+Server Port:            443
+SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES128-GCM-SHA256,2048,128
+TLS Server Name:        gxxxxxxx-api.staging.senxx-xx.xx
+
+Document Path:          /parse/classes/Sleep
+Document Length:        64 bytes
+
+Concurrency Level:      100
+Time taken for tests:   138.982 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      6750000 bytes
+Total body sent:        6820000
+HTML transferred:       640000 bytes
+Requests per second:    71.95 [#/sec] (mean)
+Time per request:       1389.816 [ms] (mean)
+Time per request:       13.898 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.43 [Kbytes/sec] received
+                        47.92 kb/s sent
+                        95.35 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:      651 1037 581.3    824   12640
+Processing:   210  329 236.4    275    5393
+Waiting:      210  306 183.5    273    5393
+Total:        900 1366 649.0   1111   12916
+
+Percentage of the requests served within a certain time (ms)
+  50%   1111
+  66%   1169
+  75%   1366
+  80%   1510
+  90%   2164
+  95%   2723
+  98%   3311
+  99%   3795
+ 100%  12916 (longest request)
+
+=============================================================================
+=============================================================================
+Number of requests : 100000, Concurrency : 128, request type : POST
+request date : 4 dec 2017
+
+$:  ab -n100000 -c128 \
+>   -p sleep.json \
+>   -H "X-Parse-Application-Id: goaxxx_staxxx" \
+>   -H "X-Parse-Master-Key: master_key" \
+>   -H "Content-Type: application/json" \
+>   -H "Accept-Encoding: gzip" \
+> https://gxxxxxxx-api.staging.senxx-xx.xx/parse/classes/Sleep
+This is ApacheBench, Version 2.3 <$Revision: 1757674 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gxxxxxxx-api.staging.senxx-xx.xx (be patient)
+SSL read failed (5) - closing connection
+Completed 10000 requests
+Completed 20000 requests
+SSL read failed (5) - closing connection
+Completed 30000 requests
+Completed 40000 requests
+SSL read failed (5) - closing connection
+Completed 50000 requests
+SSL read failed (5) - closing connection
+Completed 60000 requests
+Completed 70000 requests
+Completed 80000 requests
+SSL read failed (5) - closing connection
+Completed 90000 requests
+Completed 100000 requests
+Finished 100000 requests
+
+
+Server Software:        
+Server Hostname:        gxxxxxxx-api.staging.senxx-xx.xx
+Server Port:            443
+SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES128-GCM-SHA256,2048,128
+TLS Server Name:        gxxxxxxx-api.staging.senxx-xx.xx
+
+Document Path:          /parse/classes/Sleep
+Document Length:        64 bytes
+
+Concurrency Level:      128
+Time taken for tests:   1411.054 seconds
+Complete requests:      100000
+Failed requests:        10
+   (Connect: 5, Receive: 0, Length: 5, Exceptions: 0)
+Total transferred:      67497300 bytes
+Total body sent:        68200000
+HTML transferred:       6399744 bytes
+Requests per second:    70.87 [#/sec] (mean)
+Time per request:       1806.149 [ms] (mean)
+Time per request:       14.111 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.71 [Kbytes/sec] received
+                        47.20 kb/s sent
+                        93.91 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0 1360 632.6   1107   18661
+Processing:   209  445 335.6    373   20790
+Waiting:      208  419 246.5    371   13953
+Total:       1024 1805 733.0   1489   20790
+
+Percentage of the requests served within a certain time (ms)
+  50%   1489
+  66%   1563
+  75%   1861
+  80%   2074
+  90%   2731
+  95%   3288
+  98%   3964
+  99%   4555
+ 100%  20790 (longest request)
+
+
+=============================================================================
+=============================================================================
+Number of requests : 10000, Concurrency : 2, request type : POST 
+request date : 5 dec 2017
+ { very slow . I cancelled this test in the middle of process}
+
+ $:  ab -n10000 -c2 \
+>   -p sleep.json \
+>   -H "X-Parse-Application-Id: goaxxx_staxxx" \
+>   -H "X-Parse-Master-Key: master_key" \
+>   -H "Content-Type: application/json" \
+>   -H "Accept-Encoding: gzip" \
+> https://gxxxxxxx-api.staging.senxx-xx.xx/parse/classes/Sleep
+This is ApacheBench, Version 2.3 <$Revision: 1757674 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gxxxxxxx-api.staging.senxx-xx.xx (be patient)
+
+Completed 1000 requests
+
+Completed 2000 requests
+Completed 3000 requests
+
+Completed 4000 requests
+Completed 5000 requests
+SSL read failed (5) - closing connection
+Completed 6000 requests
+SSL handshake failed (5).
+Completed 7000 requests
+SSL handshake failed (5).
+^C
+
+Server Software:        
+Server Hostname:        gxxxxxxx-api.staging.senxx-xx.xx
+Server Port:            443
+SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES128-GCM-SHA256,2048,128
+TLS Server Name:        gxxxxxxx-api.staging.senxx-xx.xx
+
+Document Path:          /parse/classes/Sleep
+Document Length:        64 bytes
+
+Concurrency Level:      2
+Time taken for tests:   7897.126 seconds
+Complete requests:      7388
+Failed requests:        4
+   (Connect: 1, Receive: 0, Length: 3, Exceptions: 0)
+Total transferred:      4984875 bytes
+Total body sent:        5036570
+HTML transferred:       472640 bytes
+Requests per second:    0.94 [#/sec] (mean)
+Time per request:       2137.825 [ms] (mean)
+Time per request:       1068.913 [ms] (mean, across all concurrent requests)
+Transfer rate:          0.62 [Kbytes/sec] received
+                        0.62 kb/s sent
+                        1.24 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0  880 1166.5    600   35192
+Processing:   201  717 36369.9    208 3125517
+Waiting:      200  274 592.6    207   40644
+Total:        790 1597 36381.0    809 3125517
+
+Percentage of the requests served within a certain time (ms)
+  50%    809
+  66%    828
+  75%    870
+  80%    946
+  90%   1880
+  95%   2815
+  98%   4564
+  99%   6040
+ 100%  3125517 (longest request)
+
+=============================================================================
+=============================================================================
+Number of requests : 1000, Concurrency : 4, request type : POST
+request date : 5 dec 2017
+
+  ab -n1000 -c4 \
+>   -p sleep.json \
+>   -H "X-Parse-Application-Id: goaxxx_staxxx" \
+>   -H "X-Parse-Master-Key: master_key" \
+>   -H "Content-Type: application/json" \
+>   -H "Accept-Encoding: gzip" \
+> https://gxxxxxxx-api.staging.senxx-xx.xx/parse/classes/Sleep
+This is ApacheBench, Version 2.3 <$Revision: 1757674 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gxxxxxxx-api.staging.senxx-xx.xx (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:        
+Server Hostname:        gxxxxxxx-api.staging.senxx-xx.xx
+Server Port:            443
+SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES128-GCM-SHA256,2048,128
+TLS Server Name:        gxxxxxxx-api.staging.senxx-xx.xx
+
+Document Path:          /parse/classes/Sleep
+Document Length:        64 bytes
+
+Concurrency Level:      4
+Time taken for tests:   205.601 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      675000 bytes
+Total body sent:        682000
+HTML transferred:       64000 bytes
+Requests per second:    4.86 [#/sec] (mean)
+Time per request:       822.404 [ms] (mean)
+Time per request:       205.601 [ms] (mean, across all concurrent requests)
+Transfer rate:          3.21 [Kbytes/sec] received
+                        3.24 kb/s sent
+                        6.45 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:      588  610  76.2    599    1933
+Processing:   202  211  19.2    208     456
+Waiting:      201  210  19.2    207     456
+Total:        792  821  79.1    808    2140
+
+Percentage of the requests served within a certain time (ms)
+  50%    808
+  66%    814
+  75%    819
+  80%    822
+  90%    836
+  95%    862
+  98%    915
+  99%   1096
+ 100%   2140 (longest request)
+
+=============================================================================
+=============================================================================
+Number of requests : 10000, Concurrency : 100, request type : POST
+request date : 5 dec 2017
+
+   ab -n10000 -c100 \
+>   -p sleep.json \
+>   -H "X-Parse-Application-Id: goaxxx_staxxx" \
+>   -H "X-Parse-Master-Key: master_key" \
+>   -H "Content-Type: application/json" \
+>   -H "Accept-Encoding: gzip" \
+> https://gxxxxxxx-api.staging.senxx-xx.xx/parse/classes/Sleep
+This is ApacheBench, Version 2.3 <$Revision: 1757674 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gxxxxxxx-api.staging.senxx-xx.xx (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        
+Server Hostname:        gxxxxxxx-api.staging.senxx-xx.xx
+Server Port:            443
+SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES128-GCM-SHA256,2048,128
+TLS Server Name:        gxxxxxxx-api.staging.senxx-xx.xx
+
+Document Path:          /parse/classes/Sleep
+Document Length:        64 bytes
+
+Concurrency Level:      100
+Time taken for tests:   147.346 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      6750000 bytes
+Total body sent:        6820000
+HTML transferred:       640000 bytes
+Requests per second:    67.87 [#/sec] (mean)
+Time per request:       1473.461 [ms] (mean)
+Time per request:       14.735 [ms] (mean, across all concurrent requests)
+Transfer rate:          44.74 [Kbytes/sec] received
+                        45.20 kb/s sent
+                        89.94 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:      626 1110 469.5   1023   13283
+Processing:   204  356 220.4    334    5846
+Waiting:      202  353 218.4    333    5845
+Total:        879 1467 543.9   1354   13558
+
+Percentage of the requests served within a certain time (ms)
+  50%   1354
+  66%   1392
+  75%   1432
+  80%   1471
+  90%   1610
+  95%   1931
+  98%   2641
+  99%   3547
+ 100%  13558 (longest request)
+
+ =============================================================================
+=============================================================================
+Number of requests : 10000, Concurrency : 100, request type : GET 
+to simple webpage https://gxxxxxxx-api.staging.senxx-xx.xx/ just for comparison
+request date : 5 dec 2017
+
+   ab -n10000 -c100 \
+>   -H "Content-Type: application/json" \
+>   -H "Accept-Encoding: gzip" \
+> https://gxxxxxxx-api.staging.senxx-xx.xx/
+This is ApacheBench, Version 2.3 <$Revision: 1757674 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gxxxxxxx-api.staging.senxx-xx.xx (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+SSL read failed (5) - closing connection
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        
+Server Hostname:        gxxxxxxx-api.staging.senxx-xx.xx
+Server Port:            443
+SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES128-GCM-SHA256,2048,128
+TLS Server Name:        gxxxxxxx-api.staging.senxx-xx.xx
+
+Document Path:          /
+Document Length:        28 bytes
+
+Concurrency Level:      100
+Time taken for tests:   125.096 seconds
+Complete requests:      10000
+Failed requests:        2
+   (Connect: 1, Receive: 0, Length: 1, Exceptions: 0)
+Total transferred:      2279772 bytes
+HTML transferred:       279972 bytes
+Requests per second:    79.94 [#/sec] (mean)
+Time per request:       1250.961 [ms] (mean)
+Time per request:       12.510 [ms] (mean, across all concurrent requests)
+Transfer rate:          17.80 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0 1021 122.8   1007    3049
+Processing:   193  228 912.9    210   91372
+Waiting:      192  218  47.4    210    2031
+Total:        987 1248 911.4   1222   91372
+
+Percentage of the requests served within a certain time (ms)
+  50%   1222
+  66%   1232
+  75%   1243
+  80%   1250
+  90%   1288
+  95%   1324
+  98%   1367
+  99%   2160
+ 100%  91372 (longest request)

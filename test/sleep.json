@@ -1,0 +1,19 @@
+{
+   "user_id":"edi_ab_test",
+   "start_time":{
+      "__type":"Date",
+      "iso":"2017-10-01T23:00:00.000Z"
+   },
+   "end_time":{
+      "__type":"Date",
+      "iso":"2017-10-01T24:00:00.000Z"
+   },
+   "sleep_time":9,
+   "sleep_quality":"GOOD",
+   "polyphasic":true,
+   "metadata":{
+      "schema_version":"3",
+      "app_version":23,
+      "platform":"android"
+   }
+}
