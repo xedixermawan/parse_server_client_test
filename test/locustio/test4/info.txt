@@ -1,0 +1,14 @@
+target : https://goaxxx2-api.staging.xxxx-xx.xx/parse/
+number of users to simulate : 1000 
+hacth rate : 20
+RPS result : 47.5
+number of success request : 257694
+fails : 2274 ( failures 1% )
+average request (ms) : 2274
+type request POST
+
+rps high, failure % small, but avg response time is higher.
+change : adding :
+    resource.setrlimit(resource.RLIMIT_NOFILE, (10000, resource.RLIM_INFINITY))
+    min_wait = 500
+    max_wait = 2000

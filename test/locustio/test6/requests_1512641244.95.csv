@@ -1,0 +1,3 @@
+"Method","Name","# requests","# failures","Median response time","Average response time","Min response time","Max response time","Average Content Size","Requests/s"
+"POST","/parse//classes/Sleep",174133,0,210,269,201,4685,64,65.23
+"None","Total",174133,0,210,269,201,4685,64,65.23

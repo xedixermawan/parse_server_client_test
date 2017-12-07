@@ -1,0 +1,46 @@
+Count,Message,Traceback,Nodes
+7355,filedescriptor out of range in select(),"  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/locust/core.py"", line 271, in run
+    self.execute_next_task()
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/locust/core.py"", line 297, in execute_next_task
+    self.execute_task(task[""callable""], *task[""args""], **task[""kwargs""])
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/locust/core.py"", line 309, in execute_task
+    task(self, *args, **kwargs)
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/test2.py"", line 48, in savesleep
+    return self.client.post(""/classes/Sleep"", data=json.dumps(payloads,cls=DateTimeEncoder),headers={""X-Parse-Application-Id"": application_id, ""X-Parse-Master-Key"": master_key,""content-type"": ""application/json""} )
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/requests/sessions.py"", line 555, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/locust/clients.py"", line 114, in request
+    response = self._send_request_safe_mode(method, url, **kwargs)
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/locust/clients.py"", line 158, in _send_request_safe_mode
+    return requests.Session.request(self, method, url, **kwargs)
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/requests/sessions.py"", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/requests/sessions.py"", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/requests/adapters.py"", line 440, in send
+    timeout=timeout
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/urllib3/connectionpool.py"", line 601, in urlopen
+    chunked=chunked)
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/urllib3/connectionpool.py"", line 346, in _make_request
+    self._validate_conn(conn)
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/urllib3/connectionpool.py"", line 850, in _validate_conn
+    conn.connect()
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/urllib3/connection.py"", line 326, in connect
+    ssl_context=context)
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/urllib3/util/ssl_.py"", line 329, in ssl_wrap_socket
+    return context.wrap_socket(sock, server_hostname=server_hostname)
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/urllib3/contrib/pyopenssl.py"", line 443, in wrap_socket
+    rd = util.wait_for_read(sock, sock.gettimeout())
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/urllib3/util/wait.py"", line 33, in wait_for_read
+    return _wait_for_io_events(socks, EVENT_READ, timeout)
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/urllib3/util/wait.py"", line 26, in _wait_for_io_events
+    selector.select(timeout) if key[1] & events]
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/urllib3/util/selectors.py"", line 320, in select
+    self._writers, timeout)
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/urllib3/util/selectors.py"", line 94, in _syscall_wrapper
+    result = func(*args, **kwargs)
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/urllib3/util/selectors.py"", line 310, in _select
+    return select.select(r, w, [], timeout)
+  File ""/Users/sense-co2tm8aufvh3/Documents/project_rnd/myServer/locus_io/venv/lib/python2.7/site-packages/gevent/select.py"", line 141, in select
+    sel_results = _original_select(rlist, wlist, xlist, 0)
+",local

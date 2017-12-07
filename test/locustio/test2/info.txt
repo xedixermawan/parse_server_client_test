@@ -1,0 +1,8 @@
+target : https://goaxxx2-api.staging.xxxx-xx.xx/parse/
+number of users to simulate : 500 
+hacth rate : 10
+RPS result : 31.9
+number of success request : 24465
+fails :26946 ( failures 50% )
+average request (ms) : 259
+type request POST
